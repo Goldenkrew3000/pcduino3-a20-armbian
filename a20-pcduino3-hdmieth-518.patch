@@ -1,0 +1,53 @@
+--- a/arch/arm/boot/dts/sun7i-a20-pcduino3.dts
++++ b/arch/arm/boot/dts/sun7i-a20-pcduino3.dts
+@@ -61,6 +61,17 @@
+ 		stdout-path = "serial0:115200n8";
+ 	};
+ 
++	hdmi-connector {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi_out_con>;
++			};
++		};
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 
+@@ -107,6 +118,10 @@
+ 	status = "okay";
+ };
+ 
++&de {
++	status = "okay";
++};
++
+ &cpu0 {
+ 	cpu-supply = <&reg_dcdc2>;
+ };
+@@ -123,10 +138,20 @@
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&gmac_mii_pins>;
+ 	phy-handle = <&phy1>;
+-	phy-mode = "mii";
++	phy-mode = "rgmii-id";
+ 	status = "okay";
+ };
+ 
++&hdmi {
++	status = "okay";
++};
++
++&hdmi_out {
++	hdmi_out_con: endpoint {
++		remote-endpoint = <&hdmi_con_in>;
++	};
++};
++
+ &i2c0 {
+ 	status = "okay";
+ 

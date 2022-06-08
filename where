@@ -1,0 +1,4 @@
+/home/user/Desktop/b/build/userpatches/kernel/archive/sunxi-5.18
+basically in userpatches/kernel/archive/sunxi-<kernel-ver>
+then run config
+
